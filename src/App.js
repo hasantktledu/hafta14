@@ -1,31 +1,17 @@
+import { useState } from 'react';
 import './App.css';
-import useWindowSize from './hooks/useWindowSize';
+import { Kutu } from './Kutu';
+
 
 function App() {
-  const pencere = useWindowSize()
-
+  const [acik, acikGuncelle] = useState(true)
 
   return (
     <>
-      <div>
-        Genişlik: {pencere.width} <br /> 
-        Yükseklik: {pencere.height} 
-      </div>
-
-      <div className={pencere.width<=600 ? 'gizle' : ''}>
-        REKLAM REKLAM REKLAM REKLAM REKLAM REKLAM REKLAM REKLAM 
-        REKLAM REKLAM REKLAM REKLAM REKLAM REKLAM REKLAM REKLAM 
-      </div>
-
-      {
-        pencere.width > 600 &&
-          <div>
-            REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2
-            REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2 REKLAM2
-          </div>
-      }     
+      <button onClick={()=>acikGuncelle(eskiDeger=>!eskiDeger)}>{acik ? "Kapat" : "Aç"}</button>
+      { acik && <Kutu />}
     </>
-  );
+  )
 }
 
 export default App;
